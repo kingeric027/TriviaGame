@@ -3,10 +3,13 @@ body {
 }
 
 .header {
-    background-color: dodgerblue;
+    display: inline-block;
+    width: 100%;
+    background-color: #00348c;
+    overflow: auto;
     text-align: center;
-    border: 2px solid black;
-    margin-bottom: 5px;
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -16,7 +19,9 @@ h1 {
     font-style: oblique;
 }
 
+
 section {
+    border-radius: 10px;
     width: 800px;
     height: 600px;
     margin: auto;
@@ -24,10 +29,11 @@ section {
     border: 1px solid darkgrey;
 }
 
+
 .choice, .restart{
     width: 50%;
     margin: auto;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align:center;
     font-size: 20px;
     border: 2px solid black;
@@ -42,7 +48,7 @@ section {
 .question{
     width:80%; 
     margin: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-align: center;
     font-size: 20px;
 }

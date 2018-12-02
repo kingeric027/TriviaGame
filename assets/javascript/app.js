@@ -1,5 +1,5 @@
 
-var time = 30;
+var time = 20;
 var q = 0;
 var correct = 0;
 var incorrect = 0;
@@ -8,15 +8,16 @@ var intervalId;
 
 var trivia = {questions: ["Who was the 2nd president of the United States?",
 "In what battle did the British forces surrender to George Washington?",
-"What date did the stock market crash, beginning the 'Great Depression'?",
+"What date did the stock market crash, marking the beginning of the 'Great Depression'?",
 "How many men signed the Declaration of Independence?",
 "How many states seceded from the Union in the Civil War?",
 "How many Americans were killed in the Civil War?",
 "What river did George Washington famously cross to attack the British on Christmas Eve?",
-"What U.S. president commissioned the expidition of Lewis and Clark?"],
+"What U.S. president commissioned the expidition of Lewis and Clark?",
+"What famous American is on the $50 dollar bill?"],
 
 answers:["John Adams","Yorktown","October 29th, 1929", "56","11","620,000",
-"Ohio River","Thomas Jefferson"],
+"Ohio River","Thomas Jefferson","Ulysses S. Grant"],
 
 options:["Thomas Jefferson", "John Adams","Alexander Hamilton","James Madison",
 "Lexington","Bunker Hill","Saratoga","Yorktown",
@@ -24,8 +25,9 @@ options:["Thomas Jefferson", "John Adams","Alexander Hamilton","James Madison",
 "13","7","71","56",
 "5","6","13","11",
 "5,000","25,000","235,000","620,000",
-"Allegheny Riverr","Ohio River","Missouri River","Mississippi River",
-"George Washington","Thomas Jefferson","James Monroe","Ulysses S. Grant"],
+"Allegheny River","Ohio River","Missouri River","Mississippi River",
+"George Washington","Thomas Jefferson","James Monroe","Ulysses S. Grant",
+"Theodore Rosevelt", "Harriet Tubman", "Ulysses S. Grant", "Martin Luther King Jr."],
 
 gifs: ["https://media.giphy.com/media/3o7btZSWGqBFMJfPcQ/giphy.gif",
 "https://media.giphy.com/media/3ohhwIYnvpQOc4fmRa/giphy.gif",
@@ -34,12 +36,14 @@ gifs: ["https://media.giphy.com/media/3o7btZSWGqBFMJfPcQ/giphy.gif",
 "https://media.giphy.com/media/l2Sq7hRcP1BjnJqSs/giphy.gif",
 "https://media.giphy.com/media/B313NwxrHpzUs/giphy.gif",
 "https://media.giphy.com/media/HNs7T1ZhUls0o/giphy.gif",
-"https://media.giphy.com/media/4PomNMh0h3Gpi/giphy.gif"]
+"https://media.giphy.com/media/4PomNMh0h3Gpi/giphy.gif",
+"https://media.giphy.com/media/uFtywzELtkFzi/giphy.gif"]
 };
 
 questionAsk = function(){
-    time = 30;
-    $(".time").text("Time rermaining: " + time);
+    time = 20;
+    $(".time").text("Time Remaining: " + time);
+    $(".time").css({"color":"black"});
     run();
     //countdown();
     $(".options").html("");
@@ -70,7 +74,8 @@ userResponse = function(event){
         if(answer == trivia.answers[q]){
             $(".question").text("Correct!");
             $(".question").css({"color":"darkgreen",
-                                "font-size":"28px"});
+                                "font-size":"28px",
+                            "font-weight":"bold"});
             $(".options").html("");
             var gif = $("<img>");
             gif.attr("src", trivia.gifs[q]);
@@ -79,7 +84,8 @@ userResponse = function(event){
         }else{
             $(".question").text("Nope!");
             $(".question").css({"color":"darkred",
-                                "font-size":"28px"});
+                                "font-size":"28px",
+                            "font-weight":"bold"});
             $(".options").html("The correct answer is " + trivia.answers[q]);
             incorrect ++;
         }
@@ -116,6 +122,9 @@ function run() {
 countdown = function() {
     time = time - 1;
     $(".time").text("Time Remaining: " + time);
+    if(time<10){
+        $(".time").css({"color":"darkred"});
+    }
     if(time==0){
         userResponse("empty");
     }
